@@ -1,0 +1,30 @@
+
+<div id="toggle" style="display: block;"></div>
+  <div class="menu closed" id="Cmenu">
+    <ul class="profile_details">
+      <li *ngIf="authFS.afAuth.authState | async as user; else showSideLogin">
+        <img mat-card-image src="{{user.photoURL}}" class="sanket-inside profile_img"/>
+        <p class="profile_name">{{user.displayName}}</p>
+        <p class="profile_seeOut" (click)="authFS.logOut()">LogOut</p>
+        <a class="limenu" routerLink='/blogDashbourd' id="homePage">
+          <p class="profile_name_inactive profile_menu_text_green p_fa_mobile">
+            <i class="fa fa-mobile" aria-hidden="true"></i>
+            <small> Add Posts</small>
+          </p>
+        </a>
+      </li>
+      <ng-template #showSideLogin>
+        <li>
+          <img src="https://semantic-ui.com/images/avatar2/large/matthew.png" class="profile_img">
+          <p class="profile_see" (click)="authFS.logIn()">LogIn</p>
+        </li>
+      </ng-template>
+    </ul>
+    <ul class="profile_menu_bottom">
+      <li [routerLink]="['/']">
+        <span class="profile_name">
+          <a _ngcontent-c2="" class="brand_logo"> Tech Blogger </a>
+        </span>
+      </li>
+    </ul>
+  </div>
